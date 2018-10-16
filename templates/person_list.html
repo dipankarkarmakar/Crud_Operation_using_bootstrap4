@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Person list</title>
+</head>
+<body>
+<h1>Person</h1>
+
+<table border="1">
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>email</th>
+    <th>job_title</th>
+    <th>bio</th>
+    <th>View</th>
+    <th>Edit</th>
+    <th>Delete</th>
+    </tr>
+</thead>
+<tbody>
+    {% for person in object_list %}
+    <tr>
+    <td>{{ person.name }}</td>
+    <td>{{ person.email }}</td>
+    <td>{{ person.job_title }}</td>
+    <td>{{ person.bio }}</td>
+    <td><a href="{% url "person_view" person.id %}">view</a></td>
+    <td><a href="{% url "person_edit" person.id %}">edit</a></td>
+    <td><a href="{% url "person_delete" person.id %}">delete</a></td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+
+<a href="{% url "person_new" %}">New</a>
+</body>
+</html>
